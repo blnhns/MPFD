@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101410">
+    <title>Budgetly | Financial Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="../script/script.js" defer></script>
+</head>
+
+<body class="min-h-screen bg-[#101410] text-white">
+
+    <div class="min-h-screen md:flex">
+
+        <aside id="sidebar"
+            class="fixed inset-y-0 left-0 z-50 flex w-64 -translate-x-full flex-col border-r border-[#343B35] bg-[#151A15] transition-transform duration-300 md:translate-x-0">
+
+            <!-- Logo -->
+            <div class="flex h-20 items-center justify-between border-b border-[#343B35] px-6">
+                <a href="#overview" class="flex items-center gap-3">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#5CFF7A]">
+                        <i data-lucide="wallet" class="h-6 w-6 text-[#101410]"></i>
+                    </div>
+                    <span class="text-lg font-bold tracking-widest">BUDGETLY</span>
+                </a>
+
+                <button id="closeSidebar"
+                    class="rounded-lg p-2 text-[#B9C2BA] hover:bg-[#202720] md:hidden"
+                    aria-label="Close navigation">
+                    <i data-lucide="x" class="h-5 w-5"></i>
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 space-y-8 overflow-y-auto px-4 py-8">
+
+                <div>
+                    <p class="mb-3 px-3 text-xs font-semibold uppercase tracking-widest text-[#788078]">
+                        Workspace
+                    </p>
+
+                    <div class="space-y-1">
+                        <a href="/sites/dashboard.html"
+                            class="nav-link flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-[#B9C2BA] transition hover:bg-[#202720] hover:text-white">
+                            <i data-lucide="layout-dashboard" class="h-5 w-5"></i>
+                            Dashboard
+                        </a>
+                        
+                        <a href="/sites/accounts.html"
+                            class="nav-link flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-[#B9C2BA] transition hover:bg-[#202720] hover:text-white">
+                            <i data-lucide="chart-pie" class="h-5 w-5"></i>
+                            Accounts
+                        </a>
+
+                        <a href="#transactions"
+                            class="nav-link flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-[#B9C2BA] transition hover:bg-[#202720] hover:text-white">
+                            <i data-lucide="arrow-left-right" class="h-5 w-5"></i>
+                            Transactions
+                        </a>
+
+                        <a href="#money-planner"
+                            class="nav-link flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-[#B9C2BA] transition hover:bg-[#202720] hover:text-white">
+                            <i data-lucide="calendar-clock" class="h-5 w-5"></i>
+                            Money Planner
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Sidebar Bottom -->
+            <div class="border-t border-[#343B35] p-4">
+                <a href="#settings"
+                    class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-[#B9C2BA] transition hover:bg-[#202720] hover:text-white">
+                    <i data-lucide="settings" class="h-5 w-5"></i>
+                    Settings
+                </a>
+
+                <div class="mt-3 flex items-center gap-3 rounded-xl bg-[#202720] p-3">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[#343B35]">
+                        <i data-lucide="user-round" class="h-5 w-5 text-[#5CFF7A]"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <p class="truncate text-sm font-medium">My Finances</p>
+                        <p class="text-xs text-[#B9C2BA]">Personal workspace</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Mobile backdrop -->
+        <div id="sidebarBackdrop"
+            class="fixed inset-0 z-40 hidden bg-black/60 md:hidden"></div>
+
+        <!-- Main portal -->
+        <div class="min-w-0 flex-1 md:ml-64">
+
+            <!-- Top bar -->
+            <header class="sticky top-0 z-30 flex h-20 items-center justify-between border-b border-[#343B35] bg-[#101410]/95 px-5 backdrop-blur sm:px-8">
+
+                <div class="flex items-center gap-3">
+                    <button id="openSidebar"
+                        class="rounded-lg p-2 text-[#B9C2BA] transition hover:bg-[#202720] hover:text-[#5CFF7A] md:hidden"
+                        aria-label="Open navigation"
+                        aria-expanded="false"
+                        aria-controls="sidebar">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+
+                    <div>
+                        <p class="text-sm text-[#B9C2BA]">Your Financial Space</p>
+                        <p id="currentDate" class="text-sm font-medium"></p>
+                    </div>
+                </div>
+            </header>
+
+            <main id="overview" class="mx-auto max-w-7xl p-5 sm:p-8 lg:p-10">
+
+                <!-- Accounts Card -->
+                <section id="transactions" class="rounded-2xl border border-[#343B35] bg-[#202720] p-6 sm:p-8">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-lg font-semibold">Accounts</h2>
+                            <p class="mt-1 text-sm text-[#B9C2BA]">
+                                Add any accounts you have to your records.
+                            </p>
+                        </div>
+                        <button id="addTransaction"
+                            class="flex items-center gap-2 rounded-xl border border-[#343B35] px-4 py-2.5 text-sm font-medium transition hover:border-[#5CFF7A] hover:text-[#5CFF7A]">
+                            <i data-lucide="plus" class="h-4 w-4"></i>
+                            Add accounts
+                        </button>
+                    </div>
+
+                    <div id="transactionList" class="mt-6">
+                        <div class="flex flex-col items-center py-10 text-center">
+                            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#343B35]">
+                                <i data-lucide="wallet-cards" class="h-6 w-6 text-[#B9C2BA]"></i>
+                            </div>
+                            <p class="font-medium">No accounts yet</p>
+                            <p class="mt-2 max-w-sm text-sm leading-6 text-[#B9C2BA]">
+                                Add an account by clicking the "Add accounts".
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="py-8 text-center text-xs text-[#788078]">
+                    © <span id="currentYear"></span> Budgetly · Your money, your rules.
+                </footer>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Simple mobile sidebar + navigation behavior -->
+    <script>
+        
+    </script>
+
+</body>
+</html>
