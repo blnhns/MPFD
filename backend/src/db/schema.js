@@ -13,22 +13,16 @@ export const transactions = pgTable("transactions", {
 
     userId: text("user_id").notNull(),
 
-    description: varchar("description", {
-        length: 255
-    }).notNull(),
+    description: varchar("description", { length: 255 }).notNull(),
 
     amount: numeric("amount", {
         precision: 12,
         scale: 2
     }).notNull(),
 
-    type: varchar("type", {
-        length: 10
-    }).notNull(),
+    type: varchar("type", { length: 10 }).notNull(),
 
-    category: varchar("category", {
-        length: 50
-    }),
+    category: varchar("category", { length: 50 }),
 
     transactionDate: date("transaction_date").notNull(),
 
