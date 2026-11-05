@@ -10,7 +10,6 @@ import {
 
 export const transactions = pgTable("transactions", {
     id: uuid("id").primaryKey().defaultRandom(),
-
     userId: text("user_id").notNull(),
 
     description: varchar("description", { length: 255 }).notNull(),
