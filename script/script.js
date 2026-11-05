@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
     navLinks.forEach(link => {
         const href = link.getAttribute("href");
 
-        // Skip links that only point to sections on a page
         if (!href || href.startsWith("#")) {
             return;
         }
